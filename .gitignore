@@ -1,3 +1,2 @@
-.meteor/
-*.sublime-project
-*.submline-workspace
+*.sublime*
+
