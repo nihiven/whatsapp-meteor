@@ -21,6 +21,11 @@ function ChatCtrl ($scope, $reactive, $stateParams, $ionicScrollDelegate, $timeo
       return Chats.findOne(chatId);
     }
   });
+
+   $scope.$watchCollection('chat.messages', (oldVal, newVal) => {
+    let animate = oldVal.length !== newVal.length;
+    $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+  });
   
   /////////////////
   
