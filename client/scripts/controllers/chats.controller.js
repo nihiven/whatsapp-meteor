@@ -2,9 +2,10 @@ angular
   .module('Whatsapp')
   .controller('ChatsCtrl', ChatsCtrl);
  
-function ChatsCtrl ($scope, $reactive) {
+function ChatsCtrl ($scope, $reactive, NewChat) {
   $reactive(this).attach($scope);
 
+  this.showNewChatModal = showNewChatModal;
   this.remove = remove;
 
   this.helpers({
@@ -15,7 +16,11 @@ function ChatsCtrl ($scope, $reactive) {
   
   ////////////
 
+  function showNewChatModal() {
+    NewChat.showModal();
+  }
+
   function remove (chat) {
-  	Chats.remove(chat._id);
+  	Meteor.call('removeChat', chat._id);
   }
 }
